@@ -44,6 +44,5 @@ public class SignUpServlet extends HttpServlet {
         params.put("email", (String) req.getParameter("email"));
         params.put("password", (String) req.getParameter("password"));
         signUpService.signUp(params);
-
     }
 }

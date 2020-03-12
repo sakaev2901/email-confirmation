@@ -11,6 +11,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @PropertySource("classpath:application.properties")
@@ -42,6 +43,13 @@ public class ApplicationConfigContext {
 
     @Bean
     public Sender sender() {
-        return new Sender("sakaev2901@gmail.com", "Elvin2901");
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+        return new Sender("sakaev2901@gmail.com", "Elvin2901", properties);
     }
+
+
 }
